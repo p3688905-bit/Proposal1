@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>企畫書基礎概論 | 互動學習網</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .card-flip {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .card-container:hover .card-flip {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .card-back {
+            transform: rotateY(180deg);
+        }
+        .step-arrow::after {
+            content: '→';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            .step-arrow::after {
+                content: '↓';
+                right: 50%;
+                top: auto;
+                bottom: -25px;
+                transform: translateX(50%);
+            }
+        }
+        .tab-active {
+            border-bottom: 3px solid #2563eb;
+            color: #2563eb;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-pen-nib text-blue-600 text-xl"></i>
+                    <span class="font-bold text-xl text-slate-800">企畫書基礎概論</span>
+                </div>
+                <div class="hidden md:flex space-x-6 text-sm font-medium text-slate-600">
+                    <a href="#definition" class="hover:text-blue-600 transition">畫與劃</a>
+                    <a href="#mindset" class="hover:text-blue-600 transition">企劃心法</a>
+                    <a href="#process" class="hover:text-blue-600 transition">步驟與方針</a>
+                    <a href="#prep" class="hover:text-blue-600 transition">撰寫準備</a>
+                    <a href="#types" class="hover:text-blue-600 transition">企畫類型</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-slate-600 focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <a href="#definition" class="block py-2 text-slate-600 hover:text-blue-600">畫與劃</a>
+                <a href="#mindset" class="block py-2 text-slate-600 hover:text-blue-600">企劃心法</a>
+                <a href="#process" class="block py-2 text-slate-600 hover:text-blue-600">步驟與方針</a>
+                <a href="#prep" class="block py-2 text-slate-600 hover:text-blue-600">撰寫準備</a>
+                <a href="#types" class="block py-2 text-slate-600 hover:text-blue-600">企畫類型</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-16 bg-gradient-to-br from-blue-600 to-indigo-800 text-white text-center px-4">
+        <div class="max-w-4xl mx-auto fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">從構思到實踐</h1>
+            <p class="text-xl md:text-2xl opacity-90 mb-8">企畫書基礎概論與實戰技巧</p>
+            <div class="inline-block bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-medium border border-white/30">
+                <i class="fa-regular fa-lightbulb mr-2"></i> 0527 課程重點整理
+            </div>
+        </div>
+    </header>
+
+    <!-- Section 1: Definition (畫 vs 劃) -->
+    <section id="definition" class="py-16 max-w-6xl mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-slate-800 mb-4">文字辨析：畫與劃</h2>
+            <p class="text-slate-600">整體重點：搞懂這兩個字，才算真正入門。</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <!-- Card 1 -->
+            <div class="card-container h-64 cursor-pointer group perspective-1000">
+                <div class="relative w-full h-full card-flip shadow-xl rounded-xl">
+                    <!-- Front -->
+                    <div class="card-front bg-white p-8 rounded-xl flex flex-col items-center justify-center border-t-4 border-blue-500">
+                        <div class="text-6xl font-bold text-blue-600 mb-4">畫</div>
+                        <p class="text-gray-500">(滑鼠懸停或點擊翻轉)</p>
+                    </div>
+                    <!-- Back -->
+                    <div class="card-back bg-blue-600 text-white p-8 rounded-xl flex flex-col items-center justify-center text-center">
+                        <h3 class="text-2xl font-bold mb-3">詞性：名詞 / 動詞</h3>
+                        <p class="mb-2">偏重於<span class="font-bold text-yellow-300">實際著手</span></p>
+                        <p class="text-sm opacity-90">例如：畫圖、畫畫</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card-container h-64 cursor-pointer group perspective-1000">
+                <div class="relative w-full h-full card-flip shadow-xl rounded-xl">
+                    <!-- Front -->
+                    <div class="card-front bg-white p-8 rounded-xl flex flex-col items-center justify-center border-t-4 border-indigo-500">
+                        <div class="text-6xl font-bold text-indigo-600 mb-4">劃</div>
+                        <p class="text-gray-500">(滑鼠懸停或點擊翻轉)</p>
+                    </div>
+                    <!-- Back -->
+                    <div class="card-back bg-indigo-600 text-white p-8 rounded-xl flex flex-col items-center justify-center text-center">
+                        <h3 class="text-2xl font-bold mb-3">詞性：動詞 / 形容詞</h3>
+                        <p class="mb-2">偏重於<span class="font-bold text-yellow-300">思考性質</span></p>
+                        <p class="text-sm opacity-90">例如：籌劃、計劃</p>
+                        <p class="text-xs mt-2 bg-indigo-800 px-2 py-1 rounded">不可作名詞用</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 text-center bg-yellow-50 border border-yellow-200 p-4 rounded-lg max-w-2xl mx-auto">
+            <i class="fa-solid fa-star text-yellow-500 mr-2"></i>
+            <span class="font-bold text-slate-800">結論：</span>我們要先作「企<span class="text-red-600 font-bold">劃</span>」(思考)，再寫「企<span class="text-blue-600 font-bold">畫</span>書」(實際執行撰寫)。
+        </div>
+    </section>
+
+    <!-- New Section: Mindset & Capabilities -->
+    <section id="mindset" class="py-16 bg-white border-y border-gray-100">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-slate-800 mb-8">企劃所需的能力與方針</h2>
+            <div class="bg-blue-50 rounded-2xl p-8 md:p-10 shadow-inner">
+                <h3 class="text-xl font-bold text-blue-800 mb-4">重要方針：行動</h3>
+                <blockquote class="text-2xl md:text-3xl font-bold text-slate-700 leading-relaxed mb-6">
+                    <i class="fa-solid fa-quote-left text-blue-200 mr-2"></i>
+                    空想沒用 ‧ 寫出想法 ‧ 做最重要
+                    <i class="fa-solid fa-quote-right text-blue-200 ml-2"></i>
+                </blockquote>
+                <div class="grid md:grid-cols-2 gap-6 text-left mt-8">
+                    <div class="flex items-start">
+                        <div class="bg-white p-2 rounded-full shadow-sm mr-3 text-blue-500"><i class="fa-solid fa-brain"></i></div>
+                        <div>
+                            <h4 class="font-bold">從思考到實踐</h4>
+                            <p class="text-sm text-gray-600">不能只在腦中想，要隨時化為行動，把想到的概念寫下來。</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-white p-2 rounded-full shadow-sm mr-3 text-blue-500"><i class="fa-solid fa-pen-fancy"></i></div>
+                        <div>
+                            <h4 class="font-bold">系統化整理</h4>
+                            <p class="text-sm text-gray-600">經過系統化整理，思考執行的可能性。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 pt-6 border-t border-blue-100 text-blue-800 font-medium">
+                    <i class="fa-solid fa-person-running mr-2"></i>
+                    需透過不斷的練習，才能學到企劃撰寫與實踐的能力。
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Process & Benefits -->
+    <section id="process" class="py-16 bg-slate-100">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-slate-800 mb-12">企劃的步驟與核心</h2>
+
+            <!-- Flow Chart -->
+            <div class="flex flex-col md:flex-row justify-between items-center mb-16 space-y-8 md:space-y-0 relative px-4">
+                <!-- Step 1 -->
+                <div class="step-arrow relative bg-white p-4 rounded-lg shadow-md w-full md:w-40 text-center border-l-4 border-blue-400">
+                    <div class="text-2xl mb-2 text-blue-500"><i class="fa-solid fa-lightbulb"></i></div>
+                    <div class="font-bold">構思</div>
+                </div>
+                <!-- Step 2 -->
+                <div class="step-arrow relative bg-white p-4 rounded-lg shadow-md w-full md:w-40 text-center border-l-4 border-blue-400">
+                    <div class="text-2xl mb-2 text-blue-500"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    <div class="font-bold">分析</div>
+                </div>
+                <!-- Step 3 -->
+                <div class="step-arrow relative bg-white p-4 rounded-lg shadow-md w-full md:w-40 text-center border-l-4 border-blue-400">
+                    <div class="text-2xl mb-2 text-blue-500"><i class="fa-solid fa-list-check"></i></div>
+                    <div class="font-bold">歸納</div>
+                </div>
+                <!-- Step 4 -->
+                <div class="step-arrow relative bg-white p-4 rounded-lg shadow-md w-full md:w-40 text-center border-l-4 border-indigo-400">
+                    <div class="text-2xl mb-2 text-indigo-500"><i class="fa-solid fa-pen-to-square"></i></div>
+                    <div class="font-bold">擬定</div>
+                </div>
+                <!-- Step 5 -->
+                <div class="step-arrow relative bg-white p-4 rounded-lg shadow-md w-full md:w-40 text-center border-l-4 border-indigo-400">
+                    <div class="text-2xl mb-2 text-indigo-500"><i class="fa-solid fa-person-running"></i></div>
+                    <div class="font-bold">執行</div>
+                </div>
+                <!-- Step 6 -->
+                <div class="relative bg-white p-4 rounded-lg shadow-md w-full md:w-40 text-center border-l-4 border-indigo-400">
+                    <div class="text-2xl mb-2 text-indigo-500"><i class="fa-solid fa-star-half-stroke"></i></div>
+                    <div class="font-bold">評估</div>
+                </div>
+            </div>
+
+            <!-- Two Aspects Grid -->
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                    <h3 class="text-xl font-bold mb-4 text-blue-700 flex items-center">
+                        <i class="fa-solid fa-file-lines mr-3"></i>層面一：企畫書撰寫
+                    </h3>
+                    <p class="text-gray-600">將想法系統化整理，透過不斷練習，學習如何將抽象概念轉化為具體的書面計畫。</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                    <h3 class="text-xl font-bold mb-4 text-green-700 flex items-center">
+                        <i class="fa-solid fa-people-roof mr-3"></i>層面二：專案管理與執行
+                    </h3>
+                    <p class="text-gray-600">不只是寫，更要隨時化為行動。思考執行的可能性，並實際運作資源。</p>
+                </div>
+            </div>
+
+            <!-- Benefits List -->
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+                <h3 class="text-2xl font-bold mb-6 text-center">學習「企劃」的好處</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="flex items-start">
+                        <i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i>
+                        <span>訓練思考能力，以解決問題</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i>
+                        <span>用圖文書表把自己想做的事情講清楚</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i>
+                        <span>有效快速把自己的想法傳達給眾人</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i>
+                        <span>爭取經費，落實企畫內容的最佳途徑</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i>
+                        <span>認識自己的興趣、專長、優劣勢</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fa-solid fa-check text-green-500 mt-1 mr-3"></i>
+                        <span>對世界潮流、大環境更具敏感度</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Preparation (Tabs) -->
+    <section id="prep" class="py-16 max-w-6xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center text-slate-800 mb-8">企畫書撰寫前的準備</h2>
+        
+        <!-- Tab Headers -->
+        <div class="flex border-b border-gray-200 mb-8 overflow-x-auto">
+            <button onclick="openTab(event, 'self')" class="tab-btn px-6 py-3 font-medium text-gray-500 hover:text-blue-600 focus:outline-none tab-active w-full md:w-auto">1. 認識自己</button>
+            <button onclick="openTab(event, 'team')" class="tab-btn px-6 py-3 font-medium text-gray-500 hover:text-blue-600 focus:outline-none w-full md:w-auto">2. 組織團隊</button>
+            <button onclick="openTab(event, 'env')" class="tab-btn px-6 py-3 font-medium text-gray-500 hover:text-blue-600 focus:outline-none w-full md:w-auto">3. 認識環境</button>
+            <button onclick="openTab(event, 'target')" class="tab-btn px-6 py-3 font-medium text-gray-500 hover:text-blue-600 focus:outline-none w-full md:w-auto">4. 目標對象與辦法</button>
+        </div>
+
+        <!-- Tab Content: Self -->
+        <div id="self" class="tab-content fade-in">
+            <div class="bg-white p-8 rounded-lg shadow border border-gray-100 flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-6 md:mb-0 text-center">
+                    <img src="/api/placeholder/200/200" alt="Self Analysis Icon" class="w-48 h-48 mx-auto object-cover rounded-full bg-blue-100 p-2">
+                </div>
+                <div class="md:w-2/3 md:pl-8">
+                    <h3 class="text-2xl font-bold text-blue-800 mb-4">了解專長、能力、興趣、夢想</h3>
+                    <ul class="space-y-4 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="bg-blue-100 text-blue-600 p-1 rounded mr-3 text-xs font-bold shrink-0 mt-1">動機</span>
+                            <span>有許多公部門有針對青年學子提供獎助，想獲得這些獎助，就是把想做的事情好好寫成企畫書。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-blue-100 text-blue-600 p-1 rounded mr-3 text-xs font-bold shrink-0 mt-1">心態</span>
+                            <span class="italic font-medium">「我有一個想法，系統化地表現出來讓別人知道，爭取支持與認同，並且具體提供資源，幫我完成夢想！」</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-blue-100 text-blue-600 p-1 rounded mr-3 text-xs font-bold shrink-0 mt-1">方法</span>
+                            <span>依據自己的人格特質、能力素養來進行規劃。</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Content: Team -->
+        <div id="team" class="tab-content hidden fade-in">
+            <div class="bg-white p-8 rounded-lg shadow border border-gray-100">
+                <h3 class="text-2xl font-bold text-indigo-800 mb-6 text-center">多數企劃都是團隊合作</h3>
+                <div class="bg-indigo-50 p-4 rounded-lg mb-6 text-center text-indigo-800 font-medium">
+                    認識自己在團隊中的定位與能力，依據這一點來建立團隊，尋找隊友。
+                </div>
+                <div class="grid md:grid-cols-3 gap-6 text-center mb-6">
+                    <div class="p-4 border border-indigo-100 rounded-lg">
+                        <div class="text-4xl text-indigo-500 mb-3"><i class="fa-solid fa-chess-king"></i></div>
+                        <h4 class="font-bold text-lg">領導型</h4>
+                        <p class="text-sm text-gray-600 mt-2">統籌方向、決策核心</p>
+                    </div>
+                    <div class="p-4 border border-indigo-100 rounded-lg">
+                        <div class="text-4xl text-indigo-500 mb-3"><i class="fa-solid fa-chess-bishop"></i></div>
+                        <h4 class="font-bold text-lg">幕僚型</h4>
+                        <p class="text-sm text-gray-600 mt-2">策略分析、文書支援</p>
+                    </div>
+                    <div class="p-4 border border-indigo-100 rounded-lg">
+                        <div class="text-4xl text-indigo-500 mb-3"><i class="fa-solid fa-chess-pawn"></i></div>
+                        <h4 class="font-bold text-lg">執行型</h4>
+                        <p class="text-sm text-gray-600 mt-2">實地操作、落實細節</p>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-4 text-sm text-gray-700">
+                    <div class="flex items-center"><i class="fa-solid fa-check-circle text-green-500 mr-2"></i> 團隊能力越多元、完整是最好的。</div>
+                    <div class="flex items-center"><i class="fa-solid fa-check-circle text-green-500 mr-2"></i> 思考相關的人脈與資源（校內與校外）。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Content: Environment -->
+        <div id="env" class="tab-content hidden fade-in">
+            <div class="bg-white p-8 rounded-lg shadow border border-gray-100">
+                <h3 class="text-2xl font-bold text-green-800 mb-4">企劃要符合世界潮流</h3>
+                <p class="mb-6 text-gray-600">才能夠打中核心。凡是符合潮流的議題，政府一定會有相對應的補助資源。企劃要以何者為主軸？都是撰寫前要思考的問題。</p>
+                <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-500 flex items-center">
+                    <div class="text-4xl text-green-600 mr-6"><i class="fa-solid fa-book-reader"></i></div>
+                    <div>
+                        <h4 class="font-bold text-green-800 text-lg">如何增進自己對環境的觀察力？</h4>
+                        <p class="text-2xl font-bold mt-1 text-green-600">「閱讀」</p>
+                        <p class="text-sm mt-1 text-gray-600">透過大量閱讀，了解趨勢脈動。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Content: Target -->
+         <div id="target" class="tab-content hidden fade-in">
+            <div class="bg-white p-8 rounded-lg shadow border border-gray-100">
+                <h3 class="text-2xl font-bold text-purple-800 mb-4">了解提案對象與辦法</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-bold text-lg mb-2 text-purple-600"><i class="fa-solid fa-eye mr-2"></i>了解提案的目標對象</h4>
+                        <p class="text-gray-600">了解閱讀提案的觀眾（企畫書要給誰看？）。從他們的角度思考需求。</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-2 text-purple-600"><i class="fa-solid fa-file-contract mr-2"></i>讀懂企劃辦法</h4>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                            <li>讀懂徵件辦法，熟知提案限制。</li>
+                            <li>搜尋企劃主題過去的相關成果（知己知彼）。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Strategy (How to hit the point) -->
+    <section class="py-16 bg-slate-800 text-white">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">如何打中要點？</h2>
+                <p class="text-slate-300 text-lg">「這真的是一個好點子嗎？」——偵測問題，提出創意又可行的解決方案</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Left: Detection Steps & Strategy -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 text-blue-300 border-b border-blue-500/30 pb-2">1. 偵測問題的步驟</h3>
+                        <div class="flex flex-wrap gap-2 text-sm">
+                            <span class="bg-slate-700 px-3 py-1 rounded-full">釐清問題</span>
+                            <span class="text-slate-500">→</span>
+                            <span class="bg-slate-700 px-3 py-1 rounded-full">分析判斷</span>
+                            <span class="text-slate-500">→</span>
+                            <span class="bg-slate-700 px-3 py-1 rounded-full">找到關鍵因素</span>
+                            <span class="text-slate-500">→</span>
+                            <span class="bg-slate-700 px-3 py-1 rounded-full">思考對策方法</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 text-blue-300 border-b border-blue-500/30 pb-2">2. 核心策略</h3>
+                        <p class="mb-2">重點在於<span class="text-yellow-400 font-bold">「做對的事」</span>。</p>
+                        <p class="text-sm text-slate-300 mb-4">應用既有理論、分析架構。套用不同專業領域的理論來分析現況或環境，可確保企劃符合時代潮流。<br>(如社區營造可參：人、文、地、產、景)</p>
+                    </div>
+                </div>
+                
+                <!-- Right: Feasibility Assessment -->
+                <div class="bg-slate-700 p-8 rounded-xl border border-slate-600">
+                    <h3 class="text-2xl font-bold mb-6 text-center text-white">可行性評估 (Feasibility)</h3>
+                    <p class="text-center text-slate-300 mb-6 text-sm">一個好點子必須兼具創意與執行力，請評估以下四大項目：</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-slate-800 p-4 rounded text-center border border-slate-600">
+                            <i class="fa-solid fa-shop text-yellow-400 text-2xl mb-2"></i>
+                            <div class="font-bold">市場</div>
+                        </div>
+                        <div class="bg-slate-800 p-4 rounded text-center border border-slate-600">
+                            <i class="fa-solid fa-microchip text-yellow-400 text-2xl mb-2"></i>
+                            <div class="font-bold">技術</div>
+                        </div>
+                        <div class="bg-slate-800 p-4 rounded text-center border border-slate-600">
+                            <i class="fa-solid fa-sack-dollar text-yellow-400 text-2xl mb-2"></i>
+                            <div class="font-bold">預算</div>
+                        </div>
+                        <div class="bg-slate-800 p-4 rounded text-center border border-slate-600">
+                            <i class="fa-solid fa-chart-line text-yellow-400 text-2xl mb-2"></i>
+                            <div class="font-bold">獲利</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Types of Proposals -->
+    <section id="types" class="py-16 bg-slate-100">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-slate-800 mb-12">企畫書的分類</h2>
+
+            <div class="mb-12">
+                <h3 class="text-xl font-bold text-slate-700 mb-6 border-l-4 border-red-500 pl-3">依「提案階段」分</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Type 1 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-red-400 hover:shadow-xl transition">
+                        <div class="text-xs font-bold text-red-500 uppercase tracking-wide mb-2">Stage 1</div>
+                        <h4 class="text-xl font-bold mb-3">構想書 (Preproposal)</h4>
+                        <p class="text-sm text-gray-600 mb-4">陳述企劃醞釀階段的「創意構想」及企劃執行概要。</p>
+                        <div class="bg-gray-100 p-3 rounded text-xs text-gray-500">
+                            <strong>重點：</strong>建議多用圖或表來說明重點。
+                        </div>
+                    </div>
+                    <!-- Type 2 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-red-500 hover:shadow-xl transition transform md:-translate-y-4 relative z-10">
+                        <div class="text-xs font-bold text-red-600 uppercase tracking-wide mb-2">Stage 2</div>
+                        <h4 class="text-xl font-bold mb-3">企畫書 (Proposal)</h4>
+                        <p class="text-sm text-gray-600 mb-4">需要的是可以執行的創意。應就構想書延伸，加上市場評估、企劃目標、執行內容、預算進度與效益評估。</p>
+                        <div class="bg-red-50 p-3 rounded text-xs text-red-800">
+                            <strong>重點：</strong>呈現出構想、自己的企劃特色。
+                        </div>
+                    </div>
+                    <!-- Type 3 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-red-600 hover:shadow-xl transition">
+                        <div class="text-xs font-bold text-red-700 uppercase tracking-wide mb-2">Stage 3</div>
+                        <h4 class="text-xl font-bold mb-3">計畫書 (Plan)</h4>
+                        <p class="text-sm text-gray-600 mb-4">企劃決定後，具體擬定執行細節。如人員分配、執行事項、時間表、執行方法與進度控管。</p>
+                        <div class="bg-gray-100 p-3 rounded text-xs text-gray-500">
+                            <strong>重點：</strong>完整性、可行性。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold text-slate-700 mb-6 border-l-4 border-blue-500 pl-3">依「用途類型」分</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white p-4 rounded border border-gray-200">
+                        <h4 class="font-bold text-blue-800">公司層級企畫書</h4>
+                        <p class="text-sm text-gray-600 mt-2">策略層級的企劃案，影響公司的策略定位及長期發展。<br><span class="text-gray-400 text-xs">如：經營、投資、收購。</span></p>
+                    </div>
+                    <div class="bg-white p-4 rounded border border-gray-200">
+                        <h4 class="font-bold text-blue-800">事業層級企畫書</h4>
+                        <p class="text-sm text-gray-600 mt-2">營運層面或戰術層級，決定創造營收及獲利的來源。<br><span class="text-gray-400 text-xs">如：行銷、業務、生產、研發。</span></p>
+                    </div>
+                    <div class="bg-white p-4 rounded border border-gray-200">
+                        <h4 class="font-bold text-blue-800">幕僚層級企畫書</h4>
+                        <p class="text-sm text-gray-600 mt-2">支援層面的企劃案，通常由幕僚單位提出，決定執行的方案。<br><span class="text-gray-400 text-xs">如：財務、人力資源、資訊、活動。</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Quiz -->
+    <section class="py-16 max-w-4xl mx-auto px-4">
+        <div class="bg-gradient-to-r from-indigo-500 to-blue-600 rounded-2xl p-8 text-white shadow-2xl">
+            <h2 class="text-2xl font-bold mb-6 text-center"><i class="fa-solid fa-clipboard-question mr-2"></i>隨堂小測驗</h2>
+            
+            <div id="quiz-container">
+                <div class="mb-4">
+                    <p class="text-lg font-medium mb-4">問題：下列哪一個字<span class="text-yellow-300 font-bold">只能</span>當作動詞或形容詞，不能當作名詞？</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button onclick="checkAnswer('A')" class="bg-white/20 hover:bg-white/30 p-4 rounded-lg transition text-center font-bold text-xl border border-white/40">A. 畫</button>
+                        <button onclick="checkAnswer('B')" class="bg-white/20 hover:bg-white/30 p-4 rounded-lg transition text-center font-bold text-xl border border-white/40">B. 劃</button>
+                    </div>
+                </div>
+                <div id="result" class="hidden mt-4 p-4 rounded bg-white/10 border border-white/20 text-center">
+                    <!-- Result text will appear here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center text-sm">
+        <p>0527 企畫書(上)基礎概論 | 互動式學習網頁</p>
+        <p class="mt-2 text-xs">Based on provided course materials.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Tab Functionality
+        function openTab(evt, tabName) {
+            var i, tabContent, tabBtn;
+            
+            // Hide all content
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.add("hidden");
+            }
+            
+            // Remove active class from all buttons
+            tabBtn = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tabBtn.length; i++) {
+                tabBtn[i].classList.remove("tab-active");
+            }
+            
+            // Show specific tab and activate button
+            document.getElementById(tabName).classList.remove("hidden");
+            evt.currentTarget.classList.add("tab-active");
+        }
+
+        // Quiz Logic
+        function checkAnswer(answer) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.classList.remove('hidden');
+            
+            if (answer === 'B') {
+                resultDiv.innerHTML = '<span class="text-green-300 font-bold text-xl"><i class="fa-solid fa-circle-check"></i> 答對了！</span><br>「劃」偏重思考性質，只能當動詞或形容詞。';
+            } else {
+                resultDiv.innerHTML = '<span class="text-red-300 font-bold text-xl"><i class="fa-solid fa-circle-xmark"></i> 答錯了。</span><br>「畫」可以當名詞（如畫圖）也可以當動詞。請再試一次！';
+            }
+        }
+    </script>
+</body>
+</html>
